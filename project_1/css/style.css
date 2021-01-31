@@ -11,6 +11,11 @@
   outline: none;
 }
 
+:root {
+  --line-border-fill: #3498db;
+  --line-border-empty: #e0e0e0;
+}
+
 html {
   box-sizing: border-box;
 }
@@ -45,17 +50,22 @@ ul {
   height: 80vh;
   border-radius: 50px;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   margin: 10px;
   flex: 4;
   position: relative;
   overflow: hidden;
   transition: flex 0.7s ease-in;
+  background-size: auto 100%;
+  background-position: center;
+  background-repeat: repeat;
+  align-items: flex-end;
 }
 
 .panel:first-child {
   background-image: url("../img/1.jpg");
-  background-position: 0 0;
-  background-repeat: repeat;
 }
 
 .panel:nth-child(2) {
@@ -72,14 +82,99 @@ ul {
 
 .active {
   flex: 8;
-
 }
 
-video {
+.title_block {
+  width: 100%;
+  padding: 30px 20px;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.parag {
+  width: 100%;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+
+
+.container--two {
+  flex-direction: column;
+}
+
+.progress-container {
   position: relative;
-  left: -30%;
-  right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  max-width: 100%;
+  width: 350px;
+}
+
+.progress-container::before {
+  content: '';
+  position: absolute;
+  background-color: var(--line-border-empty);
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  height: 4px;
+  width: 100%;
+  z-index: -1;
+}
+
+.progress {
+  position: absolute;
+  background-color: var(--line-border-fill);
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  height: 4px;
+  width: 0%;
+  z-index: -1;
+  transition: 0.4s ease;
+}
+
+.btn {
+  background-color: var(--line-border-fill);
+  color: #fff;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 8px 30px;
+  margin: 5px;
+  font-size: 14px;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:focus {
+  outline: 0;
+}
+
+.btn:disabled {
+  background-color: var(--line-border-empty);
+  cursor: not-allowed;
+}
+
+
+
+.circle {
+  background-color: #fff;
+  color: #999;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--line-border-empty);
+  transition: .4 ease;
+}
+
+.circle.act {
+  border-color: var(--line-border-fill);
 }
